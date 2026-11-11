@@ -27,9 +27,9 @@ import {
 
 // Pre-loaded realistic demo data
 const INITIAL_PARTICIPANTS = [
-  { id: '1', name: 'alex', pin: '1234', drawnId: '2', isDrawn: true },
-  { id: '2', name: 'syd', pin: '5678', drawnId: '3', isDrawn: true },
-  { id: '3', name: 'angie', pin: '9012', drawnId: '4', isDrawn: true },
+  { id: '1', name: 'alex', pin: '', drawnId: '', isDrawn: true },
+  { id: '2', name: 'syd', pin: '', drawnId: '', isDrawn: true },
+  { id: '3', name: 'angie', pin: '', drawnId: '', isDrawn: true },
   { id: '4', name: 'nina', pin: '', drawnId: '', isDrawn: false },
   { id: '5', name: 'keyla', pin: '', drawnId: '', isDrawn: false },
   { id: '6', name: 'ella', pin: '', drawnId: '', isDrawn: false },
@@ -223,13 +223,13 @@ export default function App() {
 
   const handleOrganizerSignIn = (e) => {
     e.preventDefault();
-    if (organizerPinInput === '1234' || organizerPinInput === 'admin') {
+    if (organizerPinInput === '2580' || organizerPinInput === 'admin') {
       setIsOrganizer(true);
       setShowOrganizerModal(false);
       setActiveTab('admin');
       setOrganizerPinInput('');
     } else {
-      alert('incorrect organizer password. (default demo pass: 1234)');
+      alert('incorrect organizer password. (default demo pass: ur mom)');
     }
   };
 
