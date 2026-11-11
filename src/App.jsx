@@ -37,21 +37,19 @@ const INITIAL_PARTICIPANTS = [
 
 const INITIAL_WISHLISTS = {
   '1': [
-    { id: 'w1', title: 'cozy wool blanket', price: '$35', url: 'https://www.target.com', notes: 'prefer cream or dark green color!', store: 'target' },
-    { id: 'w2', title: 'pour-over coffee maker', price: '$28', url: 'https://www.amazon.com', notes: 'stainless steel preferred.', store: 'amazon' }
+    { id: 'w1', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
   ],
   '2': [
-    { id: 'w3', title: 'scented soy candle (pine & cedar)', price: '$20', url: 'https://www.amazon.com', notes: 'love natural wood wicks', store: 'amazon' },
-    { id: 'w4', title: 'board game - wingspan', price: '$45', url: 'https://www.target.com', notes: 'on sale at target right now', store: 'target' }
+    { id: 'w2',title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
   ],
   '3': [
-    { id: 'w5', title: 'insulated travel mug 20oz', price: '$30', url: 'https://www.walmart.com', notes: 'navy blue or matte black', store: 'walmart' }
+    { id: 'w3', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
   ],
   '4': [
-    { id: 'w6', title: 'gourmet hot chocolate set', price: '$22', url: 'https://www.amazon.com', notes: 'dark chocolate flavors please!', store: 'amazon' }
+    { id: 'w4', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
   ],
   '5': [
-    { id: 'w7', title: 'fleece lined beanie', price: '$18', url: 'https://www.amazon.com', notes: 'one size fits all', store: 'amazon' }
+    { id: 'w5', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
   ]
 };
 
