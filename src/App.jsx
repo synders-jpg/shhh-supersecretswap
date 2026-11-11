@@ -56,11 +56,20 @@ const INITIAL_WISHLISTS = {
 };
 
 // December dates for availability
-const DECEMBER_DATES = Array.from({ length: 14 }, (_, i) => ({
-  day: 15 + i,
-  dateStr: `2026-12-${15 + i}`,
-  label: `dec ${15 + i}`
-}));
+const DATES = [
+  // Dec 15 to Dec 31
+  ...Array.from({ length: 17 }, (_, i) => ({
+    day: 15 + i,
+    dateStr: `2026-12-${15 + i}`,
+    label: `dec ${15 + i}`
+  })),
+  // Jan 1 to Jan 4
+  ...Array.from({ length: 4 }, (_, i) => ({
+    day: 1 + i,
+    dateStr: `2027-01-0${1 + i}`,
+    label: `jan ${1 + i}`
+  }))
+];
 
 const INITIAL_AVAILABILITY = {
   '1': { },
