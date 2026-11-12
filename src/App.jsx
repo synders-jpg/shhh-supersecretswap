@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import Countdown from './Countdown.jsx';
 import { 
   Gift, 
   Calendar, 
@@ -387,6 +388,9 @@ export default function App() {
           </div>
         </div>
       </header>
+
+      {/* Winter break countdown */}
+      <Countdown />
 
       {/* Main Content Area */}
       <main className="max-w-5xl mx-auto px-4 py-4 relative z-10">
