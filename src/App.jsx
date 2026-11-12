@@ -55,7 +55,7 @@ const INITIAL_WISHLISTS = {
 };
 
 // December dates for availability
-const DATES = [
+const DECEMBER_DATES = [
   // Dec 15 to Dec 31
   ...Array.from({ length: 17 }, (_, i) => ({
     day: 15 + i,
