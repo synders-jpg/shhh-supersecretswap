@@ -37,21 +37,7 @@ const INITIAL_PARTICIPANTS = [
 ];
 
 const INITIAL_WISHLISTS = {
-  '1': [
-    { id: 'w1', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
-  ],
-  '2': [
-    { id: 'w2',title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
-  ],
-  '3': [
-    { id: 'w3', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
-  ],
-  '4': [
-    { id: 'w4', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
-  ],
-  '5': [
-    { id: 'w5', title: 'how to not be a loser', price: '$35', url: 'https://www.amazon.com/dp/B0D35VLHX1?lv=shuf&channelId=520&plpRedirect=mhFallback', notes: 'i suck', store: 'amazon' }
-  ]
+  
 };
 
 // December dates for availability
