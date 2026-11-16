@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Countdown from './Countdown.jsx';
+import useSharedData from './useSharedData.js';
 import { 
   Gift, 
   Calendar, 
@@ -65,19 +66,16 @@ const INITIAL_AVAILABILITY = {
 }
 
 export default function App() {
-  const [participants, setParticipants] = useState(() => {
-    const saved = localStorage.getItem('holiday_participants');
-    return saved ? JSON.parse(saved) : INITIAL_PARTICIPANTS;
-  });
-
-  const [wishlists, setWishlists] = useState(() => {
-    const saved = localStorage.getItem('holiday_wishlists');
-    return saved ? JSON.parse(saved) : INITIAL_WISHLISTS;
-  });
-
-  const [availability, setAvailability] = useState(() => {
-    const saved = localStorage.getItem('holiday_availability');
-    return saved ? JSON.parse(saved) : INITIAL_AVAILABILITY;
+  // Shared data (stored in Supabase so everyone sees the same thing)
+  const {
+    participants, setParticipants,
+    wishlists, setWishlists,
+    availability, setAvailability,
+    status: dataStatus,
+  } = useSharedData({
+    participants: INITIAL_PARTICIPANTS,
+    wishlists: INITIAL_WISHLISTS,
+    availability: INITIAL_AVAILABILITY,
   });
 
   // App settings & UI State
@@ -111,17 +109,17 @@ export default function App() {
     document.head.appendChild(link);
   }, []);
 
+  // Keep the signed-in person's record fresh when others change shared data
+  // (for example, when the organizer runs the draw)
   useEffect(() => {
-    localStorage.setItem('holiday_participants', JSON.stringify(participants));
+    if (!activeUser) return;
+    const latest = participants.find(p => p.id === activeUser.id);
+    if (!latest) {
+      if (dataStatus === 'ok' || dataStatus === 'local') setActiveUser(null);
+    } else if (JSON.stringify(latest) !== JSON.stringify(activeUser)) {
+      setActiveUser(latest);
+    }
   }, [participants]);
-
-  useEffect(() => {
-    localStorage.setItem('holiday_wishlists', JSON.stringify(wishlists));
-  }, [wishlists]);
-
-  useEffect(() => {
-    localStorage.setItem('holiday_availability', JSON.stringify(availability));
-  }, [availability]);
 
   // Helper: Secret Santa Derangement Algorithm
   const performDraw = () => {
@@ -298,6 +296,16 @@ export default function App() {
   // Festive Light Dots Banner Array
   const lightColors = ['#e63946', '#f4a261', '#2a9d8f', '#457b9d', '#e76f51', '#2a9d8f', '#e63946', '#f4a261'];
   const lightDots = Array.from({ length: 36 }).map((_, i) => lightColors[i % lightColors.length]);
+
+  if (dataStatus === 'loading' || (dataStatus === 'error' && participants.length === 0)) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-center px-6 text-emerald-900 font-semibold" style={{ backgroundColor: '#f3f6f1' }}>
+        {dataStatus === 'error'
+          ? "can't reach the shared data right now. retrying… (check your internet connection)"
+          : 'loading the gift swap… 🎄'}
+      </div>
+    );
+  }
 
   return (
     <div 
@@ -1020,6 +1028,12 @@ export default function App() {
       )}
 
       {/* Subtle Footer */}
+      {dataStatus === 'error' && (
+        <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-50 bg-red-700 text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg">
+          connection problem – your last change may not have saved. retrying…
+        </div>
+      )}
+
       <footer className="mt-12 text-center text-xs text-emerald-800 border-t border-emerald-900/10 pt-6 max-w-4xl mx-auto px-4">
         <p>🎄 super secret gift swap • Vintage Theme Design</p>
       </footer>
